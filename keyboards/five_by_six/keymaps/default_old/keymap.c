@@ -21,12 +21,12 @@ enum layers {
   _BASE,
   _LOWER,
   _RAISE,
-  _NUMPAD,
+  _NAVIG,
 };
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
-#define NUMPAD MO(_NUMPAD)
+#define SPC_NV LT(_NAVIG, KC_SPC)
 
 // Biggest kudos goes for Smittey:
 // https://github.com/Smittey/qmk_firmware/blob/master/keyboards/planck/keymaps/smittey/keymap.c
@@ -42,38 +42,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * | Ctrl | LGUI | Alt  |      |Lower |Space |  |Enter |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | LGUI | Alt  |      |Lower |Space |  |Spc_NV|Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------'  `-----------------------------------------'
  */
   [_BASE] = LAYOUT(
-    KC_GRAVE,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,        KC_6,   KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
-    KC_TAB,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,        KC_Y,   KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
-    KC_ESC,     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,        KC_H,   KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
-    KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,   KC_M, KC_COMM,  KC_DOT, KC_SLSH, MT(MOD_RSFT, KC_ENT),
-    KC_LCTL, KC_LGUI, KC_LALT,  NUMPAD,   LOWER,  KC_SPC,      KC_ENT,  RAISE, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_GRAVE,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,   KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+    KC_TAB,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,   KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
+    KC_ESC,     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,   KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+    KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,   KC_M, KC_COMM,  KC_DOT, KC_SLSH, MT(MOD_RSFT, KC_ENT),
+    KC_LCTL, KC_LGUI, KC_LALT, XXXXXXX,   LOWER,  KC_SPC,  SPC_NV,  RAISE, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT
   ),
 
-
 /* ,-----------------------------------------.  ,-----------------------------------------.
- * |      |      |      |      |      |      |  |      |      | PGDN | PGUP |      | PSCR |
+ * | `    |      |      |      |      |      |  |      |      |   /  |   *  |   -  |      |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      |      |      |  UP  |      |      |  |      | HOME |      |      | END  |      |
+ * |      |      |      |      |      |      |  |      |   7  |   8  |   9  |   +  | Del  |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * | Caps |      | LEFT | DOWN | RGHT |      |  |      | LEFT | DOWN |  UP  | RGHT |      |
+ * |      |      |      |      |      |      |  |      |   4  |   5  |   6  |   +  |  \   |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      |      | MUTE | VOL- | VOL+ |      |  |      | |>|| | |<|  | |>|  |      |      |
+ * |      |      |      |      |      |      |  |      |   1  |   2  |   3  |Enter |Enter |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      |      |      |      |      |Space |  |      |      |      |      |      | RST  |
+ * |      | LGUI | Alt  |      |      |Space |  |Space |      |   0  |   .  |Enter |Right |
  * `-----------------------------------------'  `-----------------------------------------'
  */
   [_LOWER] = LAYOUT(
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX, KC_PSCR,
-    _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,     KC_HOME, XXXXXXX, XXXXXXX,  KC_END, XXXXXXX, _______,
-    KC_CAPS, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,     KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, _______,
-    _______, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,     KC_MPLY, KC_MPRV, KC_MNXT, XXXXXXX, XXXXXXX, _______,
-    _______, _______, _______, _______, _______,  KC_SPC,     _______, _______, _______, _______, _______,   RESET
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, _______,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9, KC_PPLS,  KC_DEL,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_4,    KC_5,    KC_6, KC_PPLS, KC_BSLS,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_1,    KC_2,    KC_3, KC_PENT, MT(MOD_RSFT, KC_ENT),
+    _______, _______, _______, XXXXXXX, _______,  KC_SPC,  KC_SPC, _______,    KC_0, KC_PDOT, KC_PENT, KC_RGHT
   ),
-
 
 /* ,-----------------------------------------.  ,-----------------------------------------.
  * | F11  |  F1  |  F2  |  F3  |  F4  |  F5  |  |  F6  |  F7  |  F8  |  F9  | F10  | F12  |
@@ -88,31 +86,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------'  `-----------------------------------------'
  */
   [_RAISE] = LAYOUT(
-     KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12,
-    KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
-    _______, XXXXXXX, XXXXXXX, KC_SLSH, KC_LCBR, KC_LBRC,     KC_RBRC, KC_RCBR, KC_BSLS, KC_MINS,  KC_EQL, KC_PIPE,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, KC_UNDS, KC_PLUS, MT(MOD_LSFT, KC_ENT),
-    _______, _______, _______, _______, _______,  KC_SPC,      KC_SPC, _______, _______, _______, _______, _______
+     KC_F11,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F12,
+    KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_DEL,
+    _______, XXXXXXX, XXXXXXX, KC_SLSH, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_BSLS, KC_MINS,  KC_EQL, KC_PIPE,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_UNDS, KC_PLUS, MT(MOD_LSFT, KC_ENT),
+    _______, _______, _______, XXXXXXX, _______,  KC_SPC,  KC_SPC, _______, _______, _______, _______, _______
   ),
 
-
 /* ,-----------------------------------------.  ,-----------------------------------------.
- * | `    |      |      |      |      |      |  |      |      |   /  |   *  |   -  |      |
+ * |      |      |      |      |      |      |  |      |      |      |      |      | PSCR |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |  |      |   7  |   8  |   9  |   +  | Del  |
+ * |      |      |      |  UP  |      |      |  |      | HOME | PGDN | PGUP | END  |      |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |  |      |   4  |   5  |   6  |   +  |  \   |
+ * |      |      | LEFT | DOWN | RGHT |      |  |      | LEFT | DOWN |  UP  | RGHT |      |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |  |      |   1  |   2  |   3  |Enter |Enter |
+ * |      |      | MUTE | VOL- | VOL+ |      |  |      | |>|| | |<|  | |>|  |      |      |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      | LGUI | Alt  |      |      |Space |  |Space |      |   0  |   .  |Enter |Right |
+ * |      |      |      |      |      |Space |  |      |      |      |      |      | RST  |
  * `-----------------------------------------'  `-----------------------------------------'
  */
-  [_NUMPAD] = LAYOUT(
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,    KC_7,    KC_8,    KC_9, KC_PPLS,  KC_DEL,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,    KC_4,    KC_5,    KC_6, KC_PPLS, KC_BSLS,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,    KC_1,    KC_2,    KC_3, KC_PENT, MT(MOD_RSFT, KC_ENT),
-    _______, _______, _______, _______, _______,  KC_SPC,      KC_SPC,    KC_0,    KC_0,  KC_DOT, KC_PENT, KC_RGHT
+  [_NAVIG] = LAYOUT(
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR,
+    _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, _______,
+    _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, _______,
+    _______, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, XXXXXXX, XXXXXXX, _______,
+    _______, _______, _______, _______, _______,  KC_SPC, _______, _______, _______, _______, _______,   RESET
   ),
 };
