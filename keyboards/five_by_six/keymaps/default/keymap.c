@@ -70,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ,-----------------------------------------.  ,-----------------------------------------.
  * |      |      |      |      |      |      |  |      |      | PGDN | PGUP |      | PSCR |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * |      |      |      |  UP  |      |      |  |      | HOME |      |      | END  |      |
+ * |      |      |      |      |      |      |  |      | HOME |      |      | END  |      |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
- * | Caps |      | LEFT | DOWN | RGHT |      |  |      | LEFT | DOWN |  UP  | RGHT |      |
+ * | Caps | SHFT | CTRL |  GUI |  ALT |      |  |      | LEFT | DOWN |  UP  | RGHT |      |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
  * |      |      | MUTE | VOL- | VOL+ |      |  |      | |>|| | |<|  | |>|  |      |      |
  * |------+------+------+------+------+------|  |------+------+------+------+------+------|
@@ -81,8 +81,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_LOWER] = LAYOUT(
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX, KC_PSCR,
-    _______, XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX,     KC_HOME, XXXXXXX, XXXXXXX,  KC_END, XXXXXXX, _______,
-    KC_CAPS, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,     KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, _______,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_HOME, XXXXXXX, XXXXXXX,  KC_END, XXXXXXX, _______,
+    KC_CAPS, KC_LSFT, KC_LCTL, KC_LGUI, KC_LALT, XXXXXXX,     KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX, _______,
     _______, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,     KC_MPLY, KC_MPRV, KC_MNXT, XXXXXXX, XXXXXXX, _______,
     _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______,   RESET
   ),
